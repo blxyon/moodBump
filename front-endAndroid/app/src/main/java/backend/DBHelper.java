@@ -90,7 +90,40 @@ public class DBHelper extends SQLiteOpenHelper {
                 "WHERE date >= date(" + Integer.toString(start) + ")" +
                 "AND date < date(" + Integer.toString(end) + ")";
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery(sql);
+        Cursor res = db.rawQuery(sql, null);
+        ArrayList<journalEntry> entries = new ArrayList<journalEntry>();
+        res.moveToFirst();
+        while(res.isAfterLast() == false) {
+            Date d = new Date(res.getLong(res.getColumnIndex("date"))*1000);
+            String text = res.getString(res.getColumnIndex("text"));
+            float mood = res.getFloat(res.getColumnIndex("mood"));
+            entries.add(new journalEntry(d, text, mood));
+            res.moveToNext();
+        }
+        return entries;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public ArrayList<journalEntry> getEntryByDate(Date startDate, Date endDate) {
+        GregorianCalendar c = new GregorianCalendar();
+        c.setTime(startDate);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        int start = (int) (c.getTime().getTime()/1000);
+        c.setTime(endDate);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        int end = (int) (c.getTime().getTime()/1000);
+
+        String sql = "SELECT * from " + DATABASE_TABLE_ENTRIES +
+                "WHERE date >= date(" + Integer.toString(start) + ")" +
+                "AND date < date(" + Integer.toString(end) + ")";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery(sql, null);
         ArrayList<journalEntry> entries = new ArrayList<journalEntry>();
         res.moveToFirst();
         while(res.isAfterLast() == false) {
