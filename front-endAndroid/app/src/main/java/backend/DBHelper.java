@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "moodBumpData.db";
@@ -33,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void buildDatabase(SQLiteDatabase db) {
         Log.i("DataBase", "Building Database");
-        String entryTableStr = "CREATE TABLE " + DATABASE_TABLE_ENTRIES + "(id integer primary key, date date, text varchar(1024), mood float(10), suggestionID integer, foreign key (suggestionID) references " + DATABASE_TABLE_SUGGESTIONS + "(id))";
+        String entryTableStr = "CREATE TABLE " + DATABASE_TABLE_ENTRIES + "(id integer primary key, date integer, text varchar(1024), mood float(10), suggestionID integer, foreign key (suggestionID) references " + DATABASE_TABLE_SUGGESTIONS + "(id))";
         String suggestionsTableStr = "CREATE TABLE " + DATABASE_TABLE_SUGGESTIONS + "(id integer primary key, playlistID integer, rating, float(10), foreign key (playlistID) references " + DATABASE_TABLE_PLAYLISTS +"(id))";
         String playlistTableStr = "CREATE TABLE " + DATABASE_TABLE_PLAYLISTS + "(id integer primary key, name varchar(128))";
         db.execSQL(entryTableStr);
@@ -41,23 +44,29 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(playlistTableStr);
     }
 
-    public void insertEntry(String text, float mood) {
+    public void insertEntry(journalEntry entry) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues val = new ContentValues();
-        val.put("text", text);
-        val.put("mood", mood);
+        val.put("text", entry.getText());
+        val.put("mood", entry.getMood());
+        val.put("date", entry.getDate().getTime());
         if (db.insert(DATABASE_TABLE_ENTRIES, null, val) == -1) {
             Log.e("DataBase", "Could not insert a new row");
         }
     }
 
-    public void getAllEntries() {
+    public ArrayList<journalEntry> getAllEntries() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select * from " + DATABASE_TABLE_ENTRIES, null);
         res.moveToFirst();
+        ArrayList<journalEntry> entries = new ArrayList<journalEntry>();
         while (res.isAfterLast() == false) {
-            Log.i("DataBase", res.toString());
+            Date date = new Date(res.getLong(res.getColumnIndex("date")));
+            String text = res.getString(res.getColumnIndex("text"));
+            float mood = res.getFloat(res.getColumnIndex("mood"));
+            entries.add(new journalEntry(date, text, mood));
             res.moveToNext();
         }
+        return entries;
     }
 }
