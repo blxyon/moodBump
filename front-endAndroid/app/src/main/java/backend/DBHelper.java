@@ -55,6 +55,16 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void insertSuggestion(playlistSuggestion entry) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues val = new ContentValues();
+        val.put("playlistID", entry.getPlaylistID());
+        val.put("rating", entry.getRating());
+        if (db.insert(DATABASE_TABLE_SUGGESTIONS, null, val) == -1) {
+            Log.e("DataBase", "Could not insert a new row");
+        }
+    }
+    
     public ArrayList<journalEntry> getAllEntries() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select * from " + DATABASE_TABLE_ENTRIES, null);
@@ -65,6 +75,20 @@ public class DBHelper extends SQLiteOpenHelper {
             String text = res.getString(res.getColumnIndex("text"));
             float mood = res.getFloat(res.getColumnIndex("mood"));
             entries.add(new journalEntry(date, text, mood));
+            res.moveToNext();
+        }
+        return entries;
+    }
+
+    public ArrayList<playlistSuggestion> getAllSuggestions() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from " + DATABASE_TABLE_SUGGESTIONS, null);
+        res.moveToFirst();
+        ArrayList<playlistSuggestion> entries = new ArrayList<playlistSuggestion>();
+        while (res.isAfterLast() == false) {
+            int playlistID = res.getInt(res.getColumnIndex("playlistID"));
+            float rating = res.getFloat(res.getColumnIndex("rating"));
+            entries.add(new playlistSuggestion(playlistID, rating));
             res.moveToNext();
         }
         return entries;
