@@ -104,7 +104,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public ArrayList<journalEntry> getEntryByDate(Date startDate, Date endDate) {
+    public ArrayList<journalEntry> getEntryByRange(Date startDate, Date endDate) {
         GregorianCalendar c = new GregorianCalendar();
         c.setTime(startDate);
         c.set(Calendar.HOUR_OF_DAY, 0);
