@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from moodbumpAPI import views
 
 urlpatterns = [
+    path('mood/', views.mood),
     path('admin/', admin.site.urls),
 ]
