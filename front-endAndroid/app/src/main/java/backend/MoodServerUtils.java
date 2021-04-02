@@ -1,5 +1,12 @@
 package backend;
 
+import android.util.Log;
+
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -12,7 +19,7 @@ public class MoodServerUtils {
     public static int port = 8000;
     public static String path = "/mood";
 
-    public static URL makeUrlRequest(String text) {
+    public static URL makeUrl(String text) {
         String query = "text=" + text;
         URI uri = null;
         try {
@@ -27,5 +34,38 @@ public class MoodServerUtils {
             e.printStackTrace();
         }
         return url;
+    }
+
+    public static InputStream makeUrlRequest(URL url) {
+        InputStream in = null;
+        HttpURLConnection con = null;
+        try {
+            con = (HttpURLConnection) url.openConnection();
+            in = new BufferedInputStream(con.getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (con != null) {
+                con.disconnect();
+            }
+        }
+        return in;
+    }
+
+    public static float getMoodRating(String text) {
+        URL url = makeUrl(text);
+        InputStream in = makeUrlRequest(url);
+        if (in == null) {
+            Log.e("Server", "Could not make a successful request");
+            return 0;
+        }
+        DataInputStream input = new DataInputStream(in);
+        float result = 0;
+        try {
+            result = input.readFloat();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
