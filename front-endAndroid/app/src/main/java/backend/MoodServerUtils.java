@@ -3,9 +3,11 @@ package backend;
 import android.util.Log;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -36,12 +38,13 @@ public class MoodServerUtils {
         return url;
     }
 
-    public static InputStream makeUrlRequest(URL url) {
-        InputStream in = null;
+    public static String makeUrlRequest(URL url) {
+        String result = "";
         HttpURLConnection con = null;
         try {
             con = (HttpURLConnection) url.openConnection();
-            in = new BufferedInputStream(con.getInputStream());
+            BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            result = reader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -49,23 +52,13 @@ public class MoodServerUtils {
                 con.disconnect();
             }
         }
-        return in;
+        return result;
     }
 
     public static float getMoodRating(String text) {
         URL url = makeUrl(text);
-        InputStream in = makeUrlRequest(url);
-        if (in == null) {
-            Log.e("Server", "Could not make a successful request");
-            return 0;
-        }
-        DataInputStream input = new DataInputStream(in);
-        float result = 0;
-        try {
-            result = input.readFloat();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String response = makeUrlRequest(url);
+        float result = Float.parseFloat(response);
         return result;
     }
 }

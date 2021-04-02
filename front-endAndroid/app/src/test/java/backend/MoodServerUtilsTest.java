@@ -27,9 +27,7 @@ public class MoodServerUtilsTest {
     public void testRequest() {
         String request = "These violent delights have violent ends";
         URL url = MoodServerUtils.makeUrl(request);
-        InputStream in = MoodServerUtils.makeUrlRequest(url);
-        InputStreamReader reader = new InputStreamReader(in);
-        String result = reader.toString();
+        String result = MoodServerUtils.makeUrlRequest(url);
         assertTrue(request.equals(result));
     }
 }
