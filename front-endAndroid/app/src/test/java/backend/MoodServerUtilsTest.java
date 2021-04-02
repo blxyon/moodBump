@@ -2,6 +2,8 @@ package backend;
 
 import org.junit.Test;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -20,5 +22,14 @@ public class MoodServerUtilsTest {
             assertFalse(true);
         }
         assertTrue(url.equals(expected));
+    }
+    @Test
+    public void testRequest() {
+        String request = "These violent delights have violent ends";
+        URL url = MoodServerUtils.makeUrl(request);
+        InputStream in = MoodServerUtils.makeUrlRequest(url);
+        InputStreamReader reader = new InputStreamReader(in);
+        String result = reader.toString();
+        assertTrue(request.equals(result));
     }
 }
