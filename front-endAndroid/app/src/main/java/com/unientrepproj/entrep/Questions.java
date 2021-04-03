@@ -16,8 +16,8 @@ public class Questions extends AppCompatActivity {
     GridView gridView;
     ArrayList<imageModel> arrayList;
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.questions);
         gridView = (GridView) findViewById(R.id.girdviewQuestionAnswers);
         arrayList = new ArrayList<>();
