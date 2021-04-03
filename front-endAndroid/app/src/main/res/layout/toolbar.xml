@@ -38,7 +38,7 @@
             android:layout_marginBottom="17dp"
             android:layout_toStartOf="@+id/button2"
             android:layout_toLeftOf="@+id/button2"
-            android:src="" />
+            android:src="@mipmap/fsafa" />
 
         <ImageButton
             android:id="@+id/button2"
