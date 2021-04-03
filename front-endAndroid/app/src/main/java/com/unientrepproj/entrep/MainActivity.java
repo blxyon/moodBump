@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         DB = new DatabaseManager(this);
+        DB.dropDB();
         DB.createDB();
         Cursor c = DB.getData();
         c.moveToFirst();
@@ -35,9 +36,16 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.starting_page);
         } else {
             setContentView(R.layout.activity_main);
+            Button button=findViewById(R.id.button);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    brnToSrcond();
+                }
+            });
         }
     }
-    public void brnToSrcond(View view){
+    public void brnToSrcond(){
         TextView v=findViewById(R.id.editTextTextPersonName);
         String name=v.getText().toString();
         DB.insertUser(name);

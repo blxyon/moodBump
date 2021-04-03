@@ -13,8 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class StartingPage extends AppCompatActivity {
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.starting_page);
+
         Button button =findViewById(R.id.button6);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

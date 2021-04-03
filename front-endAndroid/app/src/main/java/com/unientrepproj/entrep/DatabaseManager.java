@@ -31,7 +31,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase DB) {
         DB.execSQL("drop Table if exists User");
-        createDB();
+        DB.execSQL("create Table IF NOT EXISTS User(name TEXT primary key)");
     }
 
     @Override
