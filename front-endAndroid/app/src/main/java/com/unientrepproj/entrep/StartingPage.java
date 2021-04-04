@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.unientrepproj.entrep.TabsClasses.QuestionsDiaryActivity;
+
 public class StartingPage extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,6 @@ public class StartingPage extends AppCompatActivity {
     }
     public void toQuestion(){
 
-        startActivity(new Intent(this, com.unientrepproj.entrep.TabsClasses.QuestionsDiaryAcrivity.class));
+        startActivity(new Intent(this, QuestionsDiaryActivity.class));
     }
 }

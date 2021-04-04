@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TabsClasses.QuestionsDiaryAcrivity"></activity>
+        <activity android:name=".TabsClasses.QuestionsDiaryActivity"></activity>
         <activity android:name="com.unientrepproj.entrep.StartingPage"></activity>
-        <activity android:name="com.unientrepproj.entrep.Results"></activity>
+        <activity android:name="com.unientrepproj.entrep.ResultClasses.ResultActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.unientrepproj.entrep.TabsClasses;
+package com.unientrepproj.entrep;
 
 public class imageModel {
     int mThumbId;

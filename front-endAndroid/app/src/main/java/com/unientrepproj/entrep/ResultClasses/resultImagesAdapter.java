@@ -1,4 +1,4 @@
-package com.unientrepproj.entrep.TabsClasses;
+package com.unientrepproj.entrep.ResultClasses;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,11 +12,11 @@ import com.unientrepproj.entrep.imageModel;
 
 import java.util.ArrayList;
 
-public class questionImagesAdapter extends BaseAdapter {
+public class resultImagesAdapter extends BaseAdapter{
     Context context;
     ArrayList<imageModel> arrayList;
 
-    public questionImagesAdapter(Context context, ArrayList<imageModel> arrayList) {
+    public resultImagesAdapter(Context context, ArrayList<imageModel> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }

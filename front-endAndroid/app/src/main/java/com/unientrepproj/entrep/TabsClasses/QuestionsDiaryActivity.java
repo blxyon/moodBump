@@ -8,10 +8,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.unientrepproj.entrep.R;
+import com.unientrepproj.entrep.imageModel;
 
 import java.util.ArrayList;
 
-public class QuestionsDiaryAcrivity extends AppCompatActivity {
+public class QuestionsDiaryActivity extends AppCompatActivity {
 
     GridView gridView;
     ArrayList<imageModel> arrayList;

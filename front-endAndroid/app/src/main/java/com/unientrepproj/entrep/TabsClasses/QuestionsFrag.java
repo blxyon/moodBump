@@ -12,7 +12,8 @@ import android.widget.GridView;
 import androidx.fragment.app.Fragment;
 
 import com.unientrepproj.entrep.R;
-import com.unientrepproj.entrep.Results;
+import com.unientrepproj.entrep.ResultClasses.ResultActivity;
+import com.unientrepproj.entrep.imageModel;
 
 import java.util.ArrayList;
 
@@ -50,7 +51,7 @@ public class QuestionsFrag extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity().getApplicationContext(), Results.class);
+                Intent intent=new Intent(getActivity().getApplicationContext(), ResultActivity.class);
                 ArrayList<Integer> booleans=new ArrayList<>();
                 for(imageModel i:arrayList){
                     booleans.add(i.isPressed());
@@ -60,10 +61,5 @@ public class QuestionsFrag extends Fragment {
             }
         });
         return v;
-
-    }
-
-    public GridView getGridView() {
-        return gridView;
     }
 }
