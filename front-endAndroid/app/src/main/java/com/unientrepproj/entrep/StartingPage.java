@@ -2,13 +2,9 @@ package com.unientrepproj.entrep;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class StartingPage extends AppCompatActivity {
@@ -26,6 +22,7 @@ public class StartingPage extends AppCompatActivity {
         });
     }
     public void toQuestion(){
-        startActivity(new Intent(this,Questions.class));
+
+        startActivity(new Intent(this, com.unientrepproj.entrep.TabsClasses.QuestionsDiaryAcrivity.class));
     }
 }

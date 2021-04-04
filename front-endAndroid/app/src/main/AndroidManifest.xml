@@ -10,16 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Entrep">
         <activity
-            android:name=".MainActivity">
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Entrep.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TabsClasses.QuestionsDiaryAcrivity"></activity>
         <activity android:name="com.unientrepproj.entrep.StartingPage"></activity>
-        <activity android:name="com.unientrepproj.entrep.Diary"></activity>
-        <activity android:name="com.unientrepproj.entrep.Questions"></activity>
         <activity android:name="com.unientrepproj.entrep.Results"></activity>
     </application>
 
