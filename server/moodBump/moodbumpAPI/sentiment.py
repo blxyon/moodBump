@@ -1,25 +1,21 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[65]:
 
 
 # NLP library
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from nltk.tokenize import sent_tokenize
 
-
-# In[66]:
 
 
 def analyse(data):
-    #text = data['text']
-    #print(data)
+    text = data['text']
     analyzer = SentimentIntensityAnalyzer()
     vs = analyzer.polarity_scores(data)
-    return vs
+    return {"mood" : vs} 
 
 
-# In[67]:
 
 
 def getValues(sentiment):
@@ -29,7 +25,6 @@ def getValues(sentiment):
     return neg, pos, compound
 
 
-# In[72]:
 
 
 def getView(sentiment):
@@ -53,8 +48,27 @@ def getView(sentiment):
     return compound, view    
 
 
-# In[73]:
 
+# Split text into sentences 
+text = "I feel like getting the mole on my back removed :("
+sentences = sent_tokenize(text)
+print(sentences)
+
+
+
+# For each sentence get the sentiment 
+views = [] # [compound, view]
+for i in range(len(sentences)):
+    sentiment = analyse(sentences[i])
+    compound, view = getView(sentiment)
+    views.append([getView(sentiment)])
+print(views)
+
+
+
+
+# Find mean of all sentences for overall mood 
+getView(analyse(text))
 
 # sentiment = analyse("I hate cats the most so much cats are vile")
 # neg, pos, compound = getValues(sentiment)
@@ -62,7 +76,6 @@ def getView(sentiment):
 # print(view, compound)
 
 
-# In[ ]:
 
 
 
