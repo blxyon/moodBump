@@ -3,6 +3,7 @@
 
 # NLP library
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from spotify import reccomend
 
 # Get sentiment dictionary 
 def getSentiment(data):
@@ -40,6 +41,6 @@ def analyse(data):
     
     # keywords = getKeywords(data)
     
-    # playlist_recs = getPlaylists(mood)
+    playlist = reccomend(mood)
     
-    return {"mood" : mood} 
+    return {"mood" : mood, "playlist" : playlist} 
