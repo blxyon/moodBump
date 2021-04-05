@@ -3,18 +3,7 @@
 
 from sentiment import analyse
 
-
-
 @api_view['POST']
 def analyse_sentiment(request):
     output = analyse(request)
     return Response(output)
-
-
-
-
-
-
-
-
-
