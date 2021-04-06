@@ -14,8 +14,12 @@
         android:text="Happy"
         android:textColor="#000000"
         app:backgroundTint="#FFFF8A"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="475dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button14"
+        app:layout_constraintVertical_bias="0.156" />
 
     <Button
         android:id="@+id/button15"
@@ -24,8 +28,12 @@
         android:text="Happy"
         android:textColor="#000000"
         app:backgroundTint="#FFFF8A"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="475dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button17"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button12"
+        app:layout_constraintVertical_bias="0.156" />
 
     <Button
         android:id="@+id/button16"
@@ -34,8 +42,12 @@
         android:text="Happy"
         android:textColor="#000000"
         app:backgroundTint="#FFFF8A"
-        tools:layout_editor_absoluteX="250dp"
-        tools:layout_editor_absoluteY="475dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintStart_toEndOf="@+id/button17"
+        app:layout_constraintTop_toBottomOf="@+id/button13"
+        app:layout_constraintVertical_bias="0.156" />
 
     <Button
         android:id="@+id/button14"
@@ -44,8 +56,10 @@
         android:text="Happy"
         android:textColor="#000000"
         app:backgroundTint="#FFFF8A"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="370dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
     <Button
         android:id="@+id/button12"
@@ -54,8 +68,11 @@
         android:text="Happy"
         android:textColor="#000000"
         app:backgroundTint="#FFFF8A"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="370dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button14"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
     <Button
         android:id="@+id/button13"
@@ -64,8 +81,11 @@
         android:text="Happy"
         android:textColor="#000000"
         app:backgroundTint="#FFFF8A"
-        tools:layout_editor_absoluteX="250dp"
-        tools:layout_editor_absoluteY="370dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toEndOf="@+id/button14"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
     <Button
         android:id="@+id/button10"
@@ -74,8 +94,12 @@
         android:text="Happy"
         android:textColor="#000000"
         app:backgroundTint="#FFFF8A"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="264dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintVertical_bias="0.902" />
 
     <include
         android:id="@+id/include"
@@ -108,8 +132,12 @@
         android:textColor="#7ac7c5"
         android:textSize="35dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="107dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintVertical_bias="0.231" />
 
     <TextView
         android:id="@+id/textView8"
@@ -123,8 +151,12 @@
         android:textColor="#7ac7c5"
         android:textSize="35dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="107dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintVertical_bias="0.492" />
 
     <TextView
         android:id="@+id/textView3"
@@ -134,8 +166,11 @@
         android:textColor="#7ac7c5"
         android:textSize="20dp"
         android:textStyle="italic"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="187dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintVertical_bias="0.712" />
 
     <Button
         android:id="@+id/button4"
@@ -144,8 +179,12 @@
         android:text="Happy"
         android:textColor="#000000"
         app:backgroundTint="#FFFF8A"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="264dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button12"
+        app:layout_constraintEnd_toStartOf="@+id/button10"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintVertical_bias="0.897" />
 
     <Button
         android:id="@+id/button11"
@@ -154,7 +193,11 @@
         android:text="Happy"
         android:textColor="#000000"
         app:backgroundTint="#FFFF8A"
-        tools:layout_editor_absoluteX="250dp"
-        tools:layout_editor_absoluteY="264dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toEndOf="@+id/button10"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintVertical_bias="0.906" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

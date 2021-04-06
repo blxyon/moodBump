@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.unientrepproj.entrep.TabsClasses.QuestionsDiaryActivity;
 
 public class StartingPage extends AppCompatActivity {
@@ -15,7 +16,7 @@ public class StartingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.starting_page);
 
-        Button button =findViewById(R.id.button6);
+        FloatingActionButton button =findViewById(R.id.button6);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

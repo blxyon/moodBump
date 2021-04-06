@@ -20,6 +20,8 @@ import com.unientrepproj.entrep.imageModel;
 
 import java.util.ArrayList;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+
 public class ResultActivity extends AppCompatActivity {
     GridView gridView;
     ArrayList<imageModel> arrayList;
@@ -59,6 +61,8 @@ public class ResultActivity extends AppCompatActivity {
     }
     public void flipperQuotes(String quote){
         TextView textView=new TextView(this);
+        textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+        textView.setWidth(MATCH_PARENT);
         textView.setText(quote);
 
         viewFlipper.addView(textView);

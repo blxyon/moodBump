@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class QuestionsFrag extends Fragment {
     GridView gridView;
-    int image[] = {R.mipmap.afraid,R.mipmap.sad,R.mipmap.happy, R.mipmap.angry,R.mipmap.surprised};
+    int image[] = {R.mipmap.afraid,R.mipmap.sad,R.mipmap.happy2, R.mipmap.angry,R.mipmap.surprised};
     ArrayList<imageModel> arrayList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
