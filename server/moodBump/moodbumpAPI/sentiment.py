@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# NLP library
+# Libraries
+import statistics
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from spotify import reccomend
 
@@ -30,7 +31,27 @@ def getMoodString(sentiment):
         mood = "extremely negative"    
     return compound, mood # returns the descriptor and the original value 
 
+def getKeywords():
+    gym_keywords = ["gym", "workout", "run", "sweat", "lifting", "weights", "exercise"]
+    sleep_keywords = ["tired", "sleep", "bed", "alarm"]
+    party_keywords = ["dance", "party", "club", "alcohol", "drinks", "friends", "gathering", "picnic"]
+    love_keywords = ["relationship", "boyfriend", "partner", "wife", "husband", "date", "crush"]
+    work_keywords = ["stress", "exam", "work", "revision", "homework", "procrastinate", "productive", "university", "school", "job"]
 
+    keywords = [["gym", gym_keywords], ["sleep", sleep_keywords], ["party", party_keywords], ["love", love_keywords], ["work", work_keywords]]
+    return keywords
+
+def findKeywords(data):
+    keywords = getKeywords()
+    kwords_in_text = []
+    # Find keywords in text
+    for i in range(len(keywords)):
+        for j in range(len(keywords[i][1])):
+            if keywords[i][1][j] in data:
+                kwords_in_text.append(keywords[i][0])            
+    k = statistics.mode(kwords_in_text)
+    return k          
+                
 # Main 
 def analyse(data):
     text = data['text']
@@ -39,8 +60,10 @@ def analyse(data):
     
     compound, mood = getMoodString(sentiment)
     
-    # keywords = getKeywords(data)
+    keyword = findKeywords(data)
     
-    playlist = reccomend(mood)
-    
-    return {"mood" : mood, "playlist" : playlist} 
+    playlists = reccomend(mood, keyword)
+#     print("You are", mood, "and you did", keyword, "so we reccomend playlists:", playlists[0]['name'], "and", playlists[1]['name'])
+    return {"mood" : mood, "playlist" : playlists} 
+
+
