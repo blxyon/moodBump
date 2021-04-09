@@ -21,10 +21,10 @@
             android:layout_width="wrap_content" />
         <GridView
             android:id="@+id/grivViewResults"
-            android:layout_height="200dp"
+            android:layout_height="437dp"
             android:layout_width="match_parent"
             android:layout_margin="10dp"
-            android:columnWidth="100dp"
+            android:columnWidth="150dp"
             android:horizontalSpacing="10dp"
             android:verticalSpacing="10dp"
             android:numColumns="auto_fit"
@@ -34,7 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:id="@+id/quoteSlider">
-            <TextView android:layout_width="match_parent"
+            <TextView android:id="@+id/textViewSlider"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent" android:text="safas"
                 android:gravity="center"></TextView>
         </ViewFlipper>

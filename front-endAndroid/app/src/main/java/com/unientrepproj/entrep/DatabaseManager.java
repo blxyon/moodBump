@@ -68,7 +68,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery(String.format("Select * from User"), null);
         return cursor;
-
     }
 
 
