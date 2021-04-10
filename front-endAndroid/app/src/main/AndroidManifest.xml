@@ -22,7 +22,7 @@
         <activity android:name=".TabsClasses.QuestionsDiaryActivity"></activity>
         <activity android:name="com.unientrepproj.entrep.StartingPage"></activity>
         <activity android:name="com.unientrepproj.entrep.ResultClasses.ResultActivity"></activity>
-
+        <activity android:name=".CalendarActivity"></activity>
     </application>
 
 </manifest>

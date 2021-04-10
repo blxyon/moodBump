@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,9 +24,18 @@ public class StartingPage extends AppCompatActivity {
                 toQuestion();
             }
         });
+        ImageButton calendarBut=findViewById(R.id.calendar);
+        calendarBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toCalendar();
+            }
+        });
     }
     public void toQuestion(){
-
         startActivity(new Intent(this, QuestionsDiaryActivity.class));
+    }
+    public void toCalendar(){
+        startActivity(new Intent(this, CalendarActivity.class));
     }
 }

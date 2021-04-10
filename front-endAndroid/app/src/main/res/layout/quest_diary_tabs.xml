@@ -6,6 +6,8 @@
     <include
         android:id="@+id/include"
         layout="@layout/toolbar" />
+
+    <include layout="@layout/timer"></include>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/slidingTabs"
         android:layout_width="match_parent"

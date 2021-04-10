@@ -1,5 +1,6 @@
 package com.unientrepproj.entrep.ResultClasses;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.LayoutInflater;
@@ -16,7 +17,9 @@ import android.widget.ViewFlipper;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.unientrepproj.entrep.CalendarActivity;
 import com.unientrepproj.entrep.R;
+import com.unientrepproj.entrep.StartingPage;
 import com.unientrepproj.entrep.TabsClasses.questionImagesAdapter;
 import com.unientrepproj.entrep.imageModel;
 import com.unientrepproj.entrep.imageModelDislikeLike;
@@ -36,7 +39,20 @@ public class ResultActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results_activity);
-
+        ImageButton calendarButon=findViewById(R.id.calendar);
+        calendarButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toCalendar();
+            }
+        });
+        ImageButton homeButton=findViewById(R.id.home);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toHome();
+            }
+        });
         gridView = findViewById(R.id.grivViewResults);
 
         arrayList = new ArrayList<>();
@@ -74,7 +90,13 @@ public class ResultActivity extends AppCompatActivity {
 
         viewFlipper.setInAnimation(this, android.R.anim.slide_in_left);
         viewFlipper.setOutAnimation(this, android.R.anim.slide_out_right);
+    }
 
-
+    public void toCalendar(){
+        startActivity(new Intent(this, CalendarActivity.class));
+    }
+    public void toHome(){
+        startActivity(new Intent(this, StartingPage.class));
     }
 }
+

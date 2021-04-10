@@ -14,11 +14,21 @@
         <include
             android:id="@+id/include"
             layout="@layout/toolbar" />
+        <include layout="@layout/results_toolbar"></include>
         <TextView
             android:id="@+id/textView"
             android:text="Based on your results:"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
+            android:layout_width="wrap_content"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/textView2"
+            android:text="Music Suggestion"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal" />
         <GridView
             android:id="@+id/grivViewResults"
             android:layout_height="437dp"
@@ -32,7 +42,7 @@
         </GridView>
         <ViewFlipper
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="40dp"
             android:id="@+id/quoteSlider">
             <TextView android:id="@+id/textViewSlider"
                 android:layout_width="match_parent"
