@@ -11,7 +11,12 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import com.unientrepproj.entrep.TabsClasses.QuestionsDiaryActivity;
+
+
+import android.util.Log;
+
 import android.view.View;
 
 import android.view.Menu;
@@ -19,14 +24,20 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import backend.DBHelper;
+import backend.journalEntry;
+
 public class MainActivity extends AppCompatActivity {
 
     DatabaseManager DB;
+    DBHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        db = new DBHelper(this);
         DB = new DatabaseManager(this);
         DB.dropDB();
         DB.createDB();
@@ -50,5 +61,8 @@ public class MainActivity extends AppCompatActivity {
         String name=v.getText().toString();
         DB.insertUser(name);
         startActivity(new Intent(this,StartingPage.class));
+
+
+
     }
 }
