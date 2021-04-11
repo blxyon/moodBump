@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        db = new DBHelper(this);
         DB = new DatabaseManager(this);
         DB.dropDB();
         DB.createDB();
@@ -56,10 +55,14 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
     public void brnToSrcond(){
         TextView v=findViewById(R.id.editTextTextPersonName);
         String name=v.getText().toString();
         DB.insertUser(name);
+        db = new DBHelper(this);
+
+
         startActivity(new Intent(this,StartingPage.class));
 
 

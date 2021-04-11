@@ -10,7 +10,9 @@
 
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#32CD32</color>
-    <color name="colorGray">#FFA500</color>
-    <color name="fireBrick">#B22222</color>
+    <color name="colorAccent">#83ed68</color>
+    <color name="colorGreenish">#d0ed68</color>
+    <color name="colorGray">#ede268</color>
+    <color name="colorRedish">#ed8768</color>
+    <color name="fireBrick">#ed6868</color>
 </resources>

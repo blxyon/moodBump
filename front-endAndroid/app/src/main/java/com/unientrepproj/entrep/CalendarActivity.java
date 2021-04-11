@@ -28,6 +28,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import backend.DBHelper;
+import backend.journalEntry;
 import info.androidramp.daterangehighlight.EventDecorator;
 
 import static android.provider.Settings.System.DATE_FORMAT;
@@ -36,21 +38,26 @@ import static android.provider.Settings.System.DATE_FORMAT;
 public class CalendarActivity extends AppCompatActivity {
 
 
-    final List<String> pinkDateList = Arrays.asList(
+    List<String> greenDateList = Arrays.asList(
             "2019-01-01",
             "2019-01-03", "2019-01-04", "2019-01-05", "2019-01-06");
-    final List<String> grayDateList = Arrays.asList(
+    List<String> grayDateList = Arrays.asList(
             "2019-01-09", "2019-01-10", "2019-01-11",
             "2019-01-24", "2019-01-25", "2019-01-26", "2019-01-27", "2019-01-28", "2019-01-29");
-    final List<String> redDateList = Arrays.asList(
+    List<String> redDateList = Arrays.asList(
             "2021-01-09", "2021-01-10", "2021-01-11",
             "2021-01-24", "2021-01-25", "2021-01-26", "2021-01-27", "2021-01-28", "2021-01-29");
+    List<String> reddish=new ArrayList<>();
+    List<String> greenish=new ArrayList<>();
     final String DATE_FORMAT = "yyyy-MM-dd";
     final CalendarDay min=CalendarDay.from(1900,1,1);
     final CalendarDay max=CalendarDay.from(2100,12,12);
-    int pink = 0;
+    int green = 0;
     int gray = 1;
     int red=2;
+    int greenis=3;
+    int redis=4;
+
     MaterialCalendarView calendarView;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -58,7 +65,7 @@ public class CalendarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_activity);
-
+        getFromDB();
         ImageButton homeButton=findViewById(R.id.home);
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,9 +91,11 @@ public class CalendarActivity extends AppCompatActivity {
                 .commit();
 
 
-        setEvent(pinkDateList, pink);
+        setEvent(greenDateList, green);
         setEvent(grayDateList, gray);
         setEvent(redDateList,red);
+        setEvent(greenish,greenis);
+        setEvent(reddish,redis);
 
         calendarView.invalidateDecorators();
     }
@@ -95,7 +104,32 @@ public class CalendarActivity extends AppCompatActivity {
         startActivity(new Intent(this, StartingPage.class));
     }
 
+    public void getFromDB(){
+        greenDateList=new ArrayList<>();
+        redDateList=new ArrayList<>();
+        grayDateList=new ArrayList<>();
+        greenish=new ArrayList<>();
+        reddish=new ArrayList<>();
 
+        DBHelper db=new DBHelper(this);
+
+        ArrayList<journalEntry> jes=db.getAllEntries();
+        SimpleDateFormat sdf=new SimpleDateFormat(DATE_FORMAT);
+        for (journalEntry je:jes){
+            if(je.getMood()==0){
+                grayDateList.add(sdf.format(je.getDate()));
+            }else if(je.getMood()==1){
+                greenDateList.add(sdf.format(je.getDate()));
+            }else if(je.getMood()==-1){
+                redDateList.add(sdf.format(je.getDate()));
+            }else if(je.getMood()==0.5){
+                greenish.add(sdf.format(je.getDate()));
+            }else if(je.getMood()==-0.5){
+                reddish.add(sdf.format(je.getDate()));
+            }
+        }
+
+    }
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -143,7 +177,7 @@ public class CalendarActivity extends AppCompatActivity {
             }
         }
 
-        if (color == pink) {
+        if (color == green) {
             setDecor(datesCenter, R.drawable.p_center);
             setDecor(datesLeft, R.drawable.p_left);
             setDecor(datesRight, R.drawable.p_right);
@@ -153,11 +187,21 @@ public class CalendarActivity extends AppCompatActivity {
             setDecor(datesLeft, R.drawable.g_left);
             setDecor(datesRight, R.drawable.g_right);
             setDecor(datesIndependent, R.drawable.g_independent);
-        }else{
+        }else if(color == red){
             setDecor(datesCenter, R.drawable.r_center);
             setDecor(datesLeft, R.drawable.r_left);
             setDecor(datesRight, R.drawable.r_right);
             setDecor(datesIndependent, R.drawable.r_independent);
+        }else if(color == redis){
+            setDecor(datesCenter, R.drawable.redish_center);
+            setDecor(datesLeft, R.drawable.redish_left);
+            setDecor(datesRight, R.drawable.redish_right);
+            setDecor(datesIndependent, R.drawable.redish_independent);
+        }else{
+            setDecor(datesCenter, R.drawable.greenish_center);
+            setDecor(datesLeft, R.drawable.greenish_left);
+            setDecor(datesRight, R.drawable.greenish_right);
+            setDecor(datesIndependent, R.drawable.greenish_independent);
         }
     }
 
