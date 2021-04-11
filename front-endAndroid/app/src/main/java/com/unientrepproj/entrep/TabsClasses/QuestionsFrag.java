@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.Fragment;
 
@@ -47,7 +48,7 @@ public class QuestionsFrag extends Fragment {
                 arrayList.get(position).setPressed();
             }
         });
-        Button button=v.findViewById(R.id.submit_quest);
+        ImageButton button=v.findViewById(R.id.submit_quest);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

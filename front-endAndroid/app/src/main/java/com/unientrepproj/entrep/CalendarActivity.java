@@ -30,7 +30,7 @@ import java.util.Locale;
 
 import backend.DBHelper;
 import backend.journalEntry;
-import info.androidramp.daterangehighlight.EventDecorator;
+
 
 import static android.provider.Settings.System.DATE_FORMAT;
 

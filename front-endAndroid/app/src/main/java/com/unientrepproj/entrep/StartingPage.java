@@ -1,10 +1,12 @@
 package com.unientrepproj.entrep;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,6 +33,13 @@ public class StartingPage extends AppCompatActivity {
                 toCalendar();
             }
         });
+
+        DatabaseManager db=new DatabaseManager(this);
+        Cursor cursor=db.getData();
+        cursor.moveToFirst();
+        String name =cursor.getString(0);
+        TextView nameTex=findViewById(R.id.nameTex);
+        nameTex.setText(name);
     }
     public void toQuestion(){
         startActivity(new Intent(this, QuestionsDiaryActivity.class));
