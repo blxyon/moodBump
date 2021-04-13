@@ -1,6 +1,8 @@
 package com.unientrepproj.entrep;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,10 +15,19 @@ public class imageModelDislikeLike{
     ImageButton disklike;
     String spotLink;
     ImageView img;
+    Bitmap imgAcc;
 
     public void setButtons(ImageButton like, ImageButton dislike){
         this.like=like;
         this.disklike=dislike;
+    }
+
+    public Bitmap getImgAcc() {
+        return imgAcc;
+    }
+
+    public void setImgAcc(Bitmap imgAcc) {
+        this.imgAcc = imgAcc;
     }
 
     public ImageView getImg() {

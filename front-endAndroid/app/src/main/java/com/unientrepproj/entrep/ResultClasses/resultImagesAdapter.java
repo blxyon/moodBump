@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.unientrepproj.entrep.R;
 import com.unientrepproj.entrep.imageModel;
 import com.unientrepproj.entrep.imageModelDislikeLike;
@@ -46,7 +47,8 @@ public class resultImagesAdapter extends BaseAdapter{
             convertView = LayoutInflater.from(context).inflate(R.layout.results_images_buttons, parent, false);
         }
         ImageView imageModel= convertView.findViewById(R.id.imageView3);
-        imageModel.setImageResource(arrayList.get(position).getmThumbIds());
+        //Glide.with(context).load(arrayList.get(position).getImgAcc()).into(imageModel);
+        imageModel.setImageBitmap(arrayList.get(position).getImgAcc());
 
         ImageButton like=convertView.findViewById(R.id.button9);
         ImageButton dislike=convertView.findViewById(R.id.button8);
