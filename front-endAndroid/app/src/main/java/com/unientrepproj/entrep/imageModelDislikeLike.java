@@ -15,18 +15,18 @@ public class imageModelDislikeLike{
     ImageButton disklike;
     String spotLink;
     ImageView img;
-    Bitmap imgAcc;
+    String imgAcc;
 
     public void setButtons(ImageButton like, ImageButton dislike){
         this.like=like;
         this.disklike=dislike;
     }
 
-    public Bitmap getImgAcc() {
+    public String getImgAcc() {
         return imgAcc;
     }
 
-    public void setImgAcc(Bitmap imgAcc) {
+    public void setImgAcc(String imgAcc) {
         this.imgAcc = imgAcc;
     }
 

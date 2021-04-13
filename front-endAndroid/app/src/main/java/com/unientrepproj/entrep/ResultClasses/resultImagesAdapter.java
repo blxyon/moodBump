@@ -47,8 +47,10 @@ public class resultImagesAdapter extends BaseAdapter{
             convertView = LayoutInflater.from(context).inflate(R.layout.results_images_buttons, parent, false);
         }
         ImageView imageModel= convertView.findViewById(R.id.imageView3);
-        //Glide.with(context).load(arrayList.get(position).getImgAcc()).into(imageModel);
-        imageModel.setImageBitmap(arrayList.get(position).getImgAcc());
+        Glide.with(context).load(arrayList.get(position).getImgAcc()).into(imageModel);
+
+
+        //imageModel.setImageBitmap(arrayList.get(position).getImgAcc());
 
         ImageButton like=convertView.findViewById(R.id.button9);
         ImageButton dislike=convertView.findViewById(R.id.button8);

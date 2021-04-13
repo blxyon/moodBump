@@ -28,7 +28,10 @@ import com.unientrepproj.entrep.TabsClasses.questionImagesAdapter;
 import com.unientrepproj.entrep.imageModel;
 import com.unientrepproj.entrep.imageModelDislikeLike;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -42,12 +45,12 @@ public class ResultActivity extends AppCompatActivity {
 
     //int image[] = {,R.mipmap.s2,R.mipmap.s3, R.mipmap.s4,R.mipmap.s5};
     String spotLinks[]={"https1","ht","asgas","asgas","asgasg"};
-//    String urls[]={"https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg","" +
-//            "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
-//            "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
-//    "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
-//    "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg"};
-    String urls[]={"http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg"};
+    String urls[]={"https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg","" +
+            "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
+            "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
+    "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
+    "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg"};
+    //String urls[]={"http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +76,7 @@ public class ResultActivity extends AppCompatActivity {
             imageModelDislikeLike imagemodel = new imageModelDislikeLike();
             //imagemodel.setmThumbIds(image[i]);
             imagemodel.setLink(spotLinks[i]);
-            imagemodel.setImgAcc(LoadImageFromWebOperations(urls[i]));
+            imagemodel.setImgAcc(urls[i]);
             //add in array list
             arrayList.add(imagemodel);
         }
@@ -94,20 +97,36 @@ public class ResultActivity extends AppCompatActivity {
         }
 
     }
-    public Bitmap LoadImageFromWebOperations(String url) {
-        try {
-            URL url2 = new URL(url);
-            Bitmap bmp = BitmapFactory.decodeStream(url2.openConnection().getInputStream());
-
-
-//            InputStream is = (InputStream) new URL(url).getContent();
-//            Drawable d = Drawable.createFromStream(is, "src name");
-            return bmp;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    public Bitmap LoadImageFromWebOperations(String url) {
+//        try {
+//            URL url2;
+//            Bitmap bmp;
+//            //InputStream in=url2.openStream();
+//            //itmap bmp = BitmapFactory.decodeStream(in);
+//            try {
+//                url2 = new URL(url);
+//                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url2.openStream()));
+//                String stringBuffer;
+//                String string = "";
+//                while ((stringBuffer = bufferedReader.readLine()) != null){
+//                    string = String.format("%s%s", string, stringBuffer);
+//                }
+//                bufferedReader.close();
+//                result = string;
+//            } catch (IOException e){
+//                e.printStackTrace();
+//                result = e.toString();
+//            }
+//            return null;
+//
+////            InputStream is = (InputStream) new URL(url).getContent();
+////            Drawable d = Drawable.createFromStream(is, "src name");
+//            return bmp;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
     public void flipperQuotes(String quote){
         TextView textView=findViewById(R.id.textViewSlider);
         textView.setText(quote);
