@@ -56,7 +56,7 @@ def findKeywords(data):
 # Main 
 def analyse(data):
 #     text = data['text']
-    
+
     sentiment = getSentiment(data)
     
     compound, mood = getMoodString(sentiment)

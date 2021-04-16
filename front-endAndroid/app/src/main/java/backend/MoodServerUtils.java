@@ -23,13 +23,13 @@ public class MoodServerUtils {
     public static String protocol = "http";
     public static String host = "127.0.0.1";
     public static int port = 8000;
-    public static String path = "/mood";
+    public static String path = "/api/sentiment/";
 
-    public static URL makeUrl(String text) {
-        String query = "text=" + text;
+    public static URL makeUrl() {
+
         URI uri = null;
         try {
-            uri = new URI(protocol, null, host, port, path, query, null);
+            uri = new URI(protocol, null, host, port, path, null, null);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -43,10 +43,10 @@ public class MoodServerUtils {
     }
 
     public static String getResponse(String text) {
-        URL url = makeUrl(text);
+        URL url = makeUrl();
         ExecutorService executor = Executors.newFixedThreadPool(1);
         Future<String> response;
-        Callable<String> server = new ServerHelper(url);
+        Callable<String> server = new ServerHelper(url, text);
         response = executor.submit(server);
         try {
             return response.get();
