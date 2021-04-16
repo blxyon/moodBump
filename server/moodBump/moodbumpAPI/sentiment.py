@@ -2,7 +2,6 @@
 # coding: utf-8
 
 # NLP library
-import import_ipynb
 import statistics
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from Spotify import reccomend
