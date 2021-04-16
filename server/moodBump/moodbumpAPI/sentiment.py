@@ -4,7 +4,7 @@
 # NLP library
 import statistics
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from Spotify import reccomend
+from .spotify import reccomend
 
 # Get sentiment dictionary 
 def getSentiment(data):
