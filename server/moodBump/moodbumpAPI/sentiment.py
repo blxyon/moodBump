@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# Libraries
+# NLP library
+import import_ipynb
 import statistics
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from spotify import reccomend
+from Spotify import reccomend
 
 # Get sentiment dictionary 
 def getSentiment(data):
@@ -32,12 +33,13 @@ def getMoodString(sentiment):
     return compound, mood # returns the descriptor and the original value 
 
 def getKeywords():
+    # Instead of listing words do NLP to find similar? 
     gym_keywords = ["gym", "workout", "run", "sweat", "lifting", "weights", "exercise"]
     sleep_keywords = ["tired", "sleep", "bed", "alarm"]
     party_keywords = ["dance", "party", "club", "alcohol", "drinks", "friends", "gathering", "picnic"]
     love_keywords = ["relationship", "boyfriend", "partner", "wife", "husband", "date", "crush"]
     work_keywords = ["stress", "exam", "work", "revision", "homework", "procrastinate", "productive", "university", "school", "job"]
-
+    # Could be a dict? 
     keywords = [["gym", gym_keywords], ["sleep", sleep_keywords], ["party", party_keywords], ["love", love_keywords], ["work", work_keywords]]
     return keywords
 
@@ -54,7 +56,7 @@ def findKeywords(data):
                 
 # Main 
 def analyse(data):
-    text = data['text']
+#     text = data['text']
     
     sentiment = getSentiment(data)
     
@@ -63,7 +65,15 @@ def analyse(data):
     keyword = findKeywords(data)
     
     playlists = reccomend(mood, keyword)
-#     print("You are", mood, "and you did", keyword, "so we reccomend playlists:", playlists[0]['name'], "and", playlists[1]['name'])
-    return {"mood" : mood, "playlist" : playlists} 
+    playlists_refined = []
+    for i in range(len(playlists)):
+        playlist_dict = {'name': playlists[i]['name'], 'description': playlists[i]['description'], 'external_urls': playlists[i]['external_urls'], 'images': playlists[i]['images'], 'id': playlists[i]['id']}
+        playlists_refined.append([playlist_dict])
+
+        
+    #print("You are", mood, "and you did", keyword, "so we reccomend playlists:", playlists[0]['name'], "and", playlists[1]['name'])
+    return {"compound" : compund, "mood" : mood, "keyword" : keyword, "playlists" : playlists_refined} 
+
+
 
 

@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from sentiment import analyse
+from .sentiment import analyse
+from rest_framework.decorators import api_view
 
-@api_view['POST']
+@api_view(['POST'])
 def analyse_sentiment(request):
     output = analyse(request)
     return Response(output)
