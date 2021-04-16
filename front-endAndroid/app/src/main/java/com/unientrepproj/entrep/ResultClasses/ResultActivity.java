@@ -45,12 +45,14 @@ public class ResultActivity extends AppCompatActivity {
 
     //int image[] = {,R.mipmap.s2,R.mipmap.s3, R.mipmap.s4,R.mipmap.s5};
     String spotLinks[]={"https1","ht","asgas","asgas","asgasg"};
-    String urls[]={"https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg","" +
-            "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
-            "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
-    "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
-    "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg"};
+//    String urls[]={"https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg","" +
+//            "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
+//            "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
+//    "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
+//    "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg"};
     //String urls[]={"http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg"};
+    String urls[]={"https://i.scdn.co/image/ab67706f00000003aa93fe4e8c2d24fc62556cba",
+"https://i.scdn.co/image/ab67706f00000003aa93fe4e8c2d24fc62556cba","https://i.scdn.co/image/ab67706f00000003aa93fe4e8c2d24fc62556cba"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
