@@ -71,7 +71,7 @@ def analyse(data):
 
         
     #print("You are", mood, "and you did", keyword, "so we reccomend playlists:", playlists[0]['name'], "and", playlists[1]['name'])
-    return {"compound" : compund, "mood" : mood, "keyword" : keyword, "playlists" : playlists_refined} 
+    return {"compound" : compound, "mood" : mood, "keyword" : keyword, "playlists" : playlists_refined} 
 
 
 
