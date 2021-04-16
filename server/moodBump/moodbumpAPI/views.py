@@ -6,5 +6,5 @@ from rest_framework.decorators import api_view
 
 @api_view(['POST'])
 def analyse_sentiment(request):
-    output = analyse(request)
+    output = analyse(str(request.body))
     return Response(output)
