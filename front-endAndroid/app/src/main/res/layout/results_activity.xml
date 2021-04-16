@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultClasses.ResultActivity">
+<ScrollView android:layout_height="match_parent" android:layout_width="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar" />
+        <include layout="@layout/results_toolbar"></include>
+        <TextView
+            android:id="@+id/textView"
+            android:text="Based on your results:"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/textView2"
+            android:text="Music Suggestion"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal" />
+        <GridView
+            android:id="@+id/grivViewResults"
+            android:layout_height="437dp"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:columnWidth="150dp"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
+            android:numColumns="auto_fit"
+            >
+        </GridView>
+        <ViewFlipper
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/quoteSlider">
+            <TextView android:id="@+id/textViewSlider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:text="safas"
+                android:gravity="center"></TextView>
+        </ViewFlipper>
+    </LinearLayout>
+</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
