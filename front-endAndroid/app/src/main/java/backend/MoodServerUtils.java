@@ -13,6 +13,10 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class MoodServerUtils {
     private MoodServerUtils() {}
@@ -38,27 +42,17 @@ public class MoodServerUtils {
         return url;
     }
 
-    public static String makeUrlRequest(URL url) {
-        String result = "";
-        HttpURLConnection con = null;
-        try {
-            con = (HttpURLConnection) url.openConnection();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            result = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (con != null) {
-                con.disconnect();
-            }
-        }
-        return result;
-    }
-
-    public static float getMoodRating(String text) {
+    public static String getResponse(String text) {
         URL url = makeUrl(text);
-        String response = makeUrlRequest(url);
-        float result = Float.parseFloat(response);
-        return result;
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+        Future<String> response;
+        Callable<String> server = new ServerHelper(url);
+        response = executor.submit(server);
+        try {
+            return response.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
