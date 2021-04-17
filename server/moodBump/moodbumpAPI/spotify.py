@@ -93,6 +93,7 @@ def reccomend(mood, k):
     
     # 2. Keyword reccomentation
     n = random.randint(0,4)
+       
     if k=="gym":
         pl = sp.playlist(gym[n])
         playlists.append(pl)
@@ -108,7 +109,8 @@ def reccomend(mood, k):
     elif k=="work":
         pl = sp.playlist(party[n])
         playlists.append(pl)
-    else:
-        playlists.append(happy[n])
+    elif k=="none":
+        pl = sp.playlist(happy[n])
+        playlists.append(pl)
     
     return playlists
