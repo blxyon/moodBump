@@ -7,6 +7,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from .spotify import reccomend
 from collections import Counter
 
+
 # Get sentiment dictionary 
 def getSentiment(data):
     sia = SentimentIntensityAnalyzer()
@@ -67,7 +68,7 @@ def findKeywords(data):
 # Main 
 def analyse(data):
 #     text = data['text']
-    
+
     sentiment = getSentiment(data)
     
     compound, mood = getMoodString(sentiment)
