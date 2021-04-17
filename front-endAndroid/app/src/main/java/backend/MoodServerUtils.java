@@ -13,19 +13,23 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class MoodServerUtils {
     private MoodServerUtils() {}
     public static String protocol = "http";
     public static String host = "127.0.0.1";
     public static int port = 8000;
-    public static String path = "/mood";
+    public static String path = "/api/sentiment/";
 
-    public static URL makeUrl(String text) {
-        String query = "text=" + text;
+    public static URL makeUrl() {
+
         URI uri = null;
         try {
-            uri = new URI(protocol, null, host, port, path, query, null);
+            uri = new URI(protocol, null, host, port, path, null, null);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -38,27 +42,17 @@ public class MoodServerUtils {
         return url;
     }
 
-    public static String makeUrlRequest(URL url) {
-        String result = "";
-        HttpURLConnection con = null;
+    public static String getResponse(String text) {
+        URL url = makeUrl();
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+        Future<String> response;
+        Callable<String> server = new ServerHelper(url, text);
+        response = executor.submit(server);
         try {
-            con = (HttpURLConnection) url.openConnection();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            result = reader.readLine();
-        } catch (IOException e) {
+            return response.get();
+        } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (con != null) {
-                con.disconnect();
-            }
+            return null;
         }
-        return result;
-    }
-
-    public static float getMoodRating(String text) {
-        URL url = makeUrl(text);
-        String response = makeUrlRequest(url);
-        float result = Float.parseFloat(response);
-        return result;
     }
 }

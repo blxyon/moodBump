@@ -42,9 +42,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void buildDatabase(SQLiteDatabase db) {
         Log.i("DataBase", "Building Database");
-        String entryTableStr = "CREATE TABLE " + DATABASE_TABLE_ENTRIES + "(id integer primary key, date integer, text varchar(1024), mood float(10), suggestionID integer, foreign key (suggestionID) references " + DATABASE_TABLE_SUGGESTIONS + "(id))";
-        String suggestionsTableStr = "CREATE TABLE " + DATABASE_TABLE_SUGGESTIONS + "(id integer primary key, playlistID integer, rating float(10), foreign key (playlistID) references " + DATABASE_TABLE_PLAYLISTS +"(id))";
-        String playlistTableStr = "CREATE TABLE " + DATABASE_TABLE_PLAYLISTS + "(id integer primary key, name varchar(128))";
+        String entryTableStr = "CREATE TABLE IF NOT EXISTS " + DATABASE_TABLE_ENTRIES + "(id integer primary key, date integer, text varchar(1024), mood float(10), suggestionID integer, foreign key (suggestionID) references " + DATABASE_TABLE_SUGGESTIONS + "(id))";
+        String suggestionsTableStr = "CREATE TABLE IF NOT EXISTS " + DATABASE_TABLE_SUGGESTIONS + "(id integer primary key, playlistID integer, rating float(10), foreign key (playlistID) references " + DATABASE_TABLE_PLAYLISTS +"(id))";
+        String playlistTableStr = "CREATE TABLE IF NOT EXISTS " + DATABASE_TABLE_PLAYLISTS + "(id integer primary key, name varchar(128))";
         db.execSQL(entryTableStr);
         db.execSQL(suggestionsTableStr);
         db.execSQL(playlistTableStr);
