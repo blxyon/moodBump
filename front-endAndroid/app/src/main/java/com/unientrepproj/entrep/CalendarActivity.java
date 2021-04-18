@@ -73,7 +73,13 @@ public class CalendarActivity extends AppCompatActivity {
                 toHome();
             }
         });
-
+        ImageButton contactsBut=findViewById(R.id.contacts);
+        contactsBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toContacts();
+            }
+        });
 
         TextView statsText=findViewById(R.id.statsText);
         statsText.setText("This month there has been a 10% increase in your positive mood!");
@@ -227,5 +233,8 @@ public class CalendarActivity extends AppCompatActivity {
         } catch (ParseException e) {
             return null;
         }
+    }
+    public void toContacts(){
+        startActivity(new Intent(this, ContactActivity.class));
     }
 }

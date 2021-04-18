@@ -6,6 +6,10 @@
     tools:context=".TabsClasses.QuestionsFrag">
 
     <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,7 +20,7 @@
         <include layout="@layout/question"></include>
         <GridView
             android:id="@+id/girdviewQuestionAnswers"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:layout_width="match_parent"
             android:layout_margin="10dp"
             android:columnWidth="100dp"
@@ -24,16 +28,51 @@
             android:verticalSpacing="10dp"
             android:numColumns="auto_fit">
         </GridView>
+        <include layout="@layout/question_2"></include>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/q2ans"></EditText>
+        <include layout="@layout/question_3"></include>
 
-        <ImageButton
-            android:id="@+id/submit_quest"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:scaleType="fitCenter"
-            android:layout_gravity="right"
-            android:src="@mipmap/next">
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
-        </ImageButton>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"></RadioButton>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No, I don't know"></RadioButton>
+        </RadioGroup>
+
+        <include layout="@layout/question_4"></include>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/q4ans"></EditText>
+        <include layout="@layout/question_5"></include>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/q5ans"></EditText>
+
     </LinearLayout>
     </ScrollView>
+    </RelativeLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/submit_quest"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#7ac7c5"
+        android:text="getResults"
+        android:src="@mipmap/next"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="109dp"
+        >
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </FrameLayout>

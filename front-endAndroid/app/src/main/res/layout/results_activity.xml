@@ -31,7 +31,7 @@
             android:gravity="center_horizontal" />
         <GridView
             android:id="@+id/grivViewResults"
-            android:layout_height="437dp"
+            android:layout_height="400dp"
             android:layout_width="match_parent"
             android:layout_margin="10dp"
             android:columnWidth="150dp"
@@ -44,10 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:id="@+id/quoteSlider">
-            <TextView android:id="@+id/textViewSlider"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" android:text="safas"
-                android:gravity="center"></TextView>
+
         </ViewFlipper>
     </LinearLayout>
 </ScrollView>

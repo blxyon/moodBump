@@ -17,6 +17,14 @@ import androidx.fragment.app.Fragment;
 import com.unientrepproj.entrep.R;
 import com.unientrepproj.entrep.ResultClasses.ResultActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import backend.MoodServerUtils;
+
 
 public class DiaryFrag extends Fragment {
 
@@ -36,12 +44,39 @@ public class DiaryFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 String s=journalText.getText().toString();
-
+                ArrayList<String> imagesLinks=new ArrayList();
+                ArrayList<String> spotLinks=new ArrayList();
 
                 Log.i("string from diary:",s);
-                Intent intent=new Intent(getActivity().getApplicationContext(), ResultActivity.class);//defining the next page to start
+                String s2=MoodServerUtils.getResponse(s);
+                try {
+                    JSONObject jsonObject = new JSONObject(s2);
 
-                startActivity(intent);//starting it
+                    JSONArray playlists=jsonObject.getJSONArray("playlists");
+
+                    for(int i=0;i<playlists.length();i++){
+                        JSONArray tempObj2=playlists.getJSONArray(i);
+                        JSONObject tempObj=tempObj2.getJSONObject(0);
+
+
+                        String spotLink= (tempObj.getJSONObject("external_urls")).getString("spotify");
+                        spotLinks.add(spotLink);
+                        String imageLink=((JSONObject) (tempObj.getJSONArray("images").get(0))).getString("url");
+                        imagesLinks.add(imageLink);
+                    }
+
+                    Intent intent=new Intent(getActivity().getApplicationContext(), ResultActivity.class);//defining the next page to start
+                    String[] arraySpot = spotLinks.toArray(new String[0]);
+                    String[] arrayImg = imagesLinks.toArray(new String[0]);
+                    intent.putExtra("spotLinks",arraySpot);
+                    intent.putExtra("imgLinks",arrayImg);
+                    startActivity(intent);//starting it
+                }catch (JSONException err){
+                    Log.d("Error", err.toString());
+                }
+
+
+
             }
         });
 

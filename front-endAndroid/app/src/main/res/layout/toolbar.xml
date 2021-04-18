@@ -65,7 +65,7 @@
             android:src="@mipmap/calendar"></ImageButton>
 
         <ImageButton
-            android:id="@+id/button3"
+            android:id="@+id/contacts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"

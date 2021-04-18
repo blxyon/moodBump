@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F3F3F3">
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
+    <include layout="@layout/contacts_toolbar"></include>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NHS mental health info:"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        ></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="https://www.nhs.uk/mental-health/nhs-voluntary-charity-services/nhs-services/how-to-access-mental-health-services/">
+
+    </EditText>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bath mind number:"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        ></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="01225 316199"
+        android:layout_margin="10dp">
+    </EditText>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Find your local NHS urgent mental health helpline:"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        ></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="https://www.nhs.uk/service-search/mental-health/find-an-urgent-mental-health-helpline">
+    </EditText>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Samaritans number:"
+        android:layout_margin="10dp"
+        android:textSize="20sp">
+    </TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="116 123"/>
+</LinearLayout>
