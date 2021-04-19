@@ -21,6 +21,8 @@
             android:text="Based on your results:"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/textView2"
@@ -28,6 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textAlignment="center"
             android:gravity="center_horizontal" />
         <GridView

@@ -1,5 +1,6 @@
 package com.unientrepproj.entrep.ResultClasses;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -149,8 +150,10 @@ public class ResultActivity extends AppCompatActivity {
 //            return null;
 //        }
 //    }
+    @SuppressLint("ResourceAsColor")
     public void flipperQuotes(String quote){
         TextView textView=new TextView(this);
+        textView.setTextColor(R.color.black);
         textView.setGravity(Gravity.CENTER);
         textView.setText(quote);
 

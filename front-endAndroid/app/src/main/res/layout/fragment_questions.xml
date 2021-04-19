@@ -21,7 +21,7 @@
         <include layout="@layout/question"></include>
         <GridView
             android:id="@+id/girdviewQuestionAnswers"
-            android:layout_height="440dp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_margin="10dp"
             android:columnWidth="100dp"
@@ -41,16 +41,19 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/black"
             android:textColorHint="@color/black">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:text="Yes"></RadioButton>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:text="No, I don't know"></RadioButton>
         </RadioGroup>
 

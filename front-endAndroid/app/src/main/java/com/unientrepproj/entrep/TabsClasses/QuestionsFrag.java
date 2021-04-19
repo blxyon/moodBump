@@ -33,6 +33,7 @@ public class QuestionsFrag extends Fragment {
     int image[] = {R.mipmap.afraid,R.mipmap.sad,R.mipmap.happy2, R.mipmap.angry,R.mipmap.surprised,R.mipmap.disgusted};
     String emotions[]={"afraid","sad","happy","angry","surprised","disgusted"};
     ArrayList<imageModel> arrayList;
+    questionImagesAdapter adapter;
     View v;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,8 +51,8 @@ public class QuestionsFrag extends Fragment {
             arrayList.add(imagemodel);
         }
 
-        questionImagesAdapter adpter= new questionImagesAdapter(getActivity().getApplicationContext(), arrayList);
-        gridView.setAdapter(adpter);
+        adapter= new questionImagesAdapter(getActivity().getApplicationContext(), arrayList);
+        gridView.setAdapter(adapter);
         //item click listner
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -60,7 +61,7 @@ public class QuestionsFrag extends Fragment {
             }
         });
 
-
+        setDynamicHeight();
         FloatingActionButton button=v.findViewById(R.id.submit_quest);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,5 +122,30 @@ public class QuestionsFrag extends Fragment {
         s=s+" "+q5Answer.getText().toString();
 
         return s;
+    }
+    private void setDynamicHeight() {
+        if (adapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        int items = adapter.getCount();
+        int rows = 0;
+
+        View listItem = adapter.getView(0, null, gridView);
+        listItem.measure(0, 0);
+        totalHeight = listItem.getMeasuredHeight();
+
+        float x = 1;
+        if( items > 5 ){
+            x = items/5;
+            rows = (int) (x + 1);
+            totalHeight *= rows;
+        }
+
+        ViewGroup.LayoutParams params = gridView.getLayoutParams();
+        params.height = totalHeight+20;
+        gridView.setLayoutParams(params);
     }
 }
