@@ -87,8 +87,8 @@ public class DBHelper extends SQLiteOpenHelper {
         int end = (int) (c.getTime().getTime()/1000);
 
         String sql = "SELECT * from " + DATABASE_TABLE_ENTRIES +
-                "WHERE date >= date(" + Integer.toString(start) + ")" +
-                "AND date < date(" + Integer.toString(end) + ")";
+                " WHERE date >= " + Integer.toString(start) +
+                " AND date < " + Integer.toString(end);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery(sql, null);
         ArrayList<journalEntry> entries = new ArrayList<journalEntry>();
@@ -118,10 +118,9 @@ public class DBHelper extends SQLiteOpenHelper {
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
         int end = (int) (c.getTime().getTime()/1000);
-
         String sql = "SELECT * from " + DATABASE_TABLE_ENTRIES +
-                "WHERE date >= date(" + Integer.toString(start) + ")" +
-                "AND date < date(" + Integer.toString(end) + ")";
+                " WHERE date >= " + Integer.toString(start) +
+                " AND date < " + Integer.toString(end);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery(sql, null);
         ArrayList<journalEntry> entries = new ArrayList<journalEntry>();

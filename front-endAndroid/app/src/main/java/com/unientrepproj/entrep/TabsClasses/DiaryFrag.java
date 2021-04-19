@@ -1,6 +1,7 @@
 package com.unientrepproj.entrep.TabsClasses;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,9 +22,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.SimpleTimeZone;
 
+import backend.DBHelper;
 import backend.MoodServerUtils;
+import backend.journalEntry;
 
 
 public class DiaryFrag extends Fragment {
@@ -49,11 +56,15 @@ public class DiaryFrag extends Fragment {
 
                 Log.i("string from diary:",s);
                 String s2=MoodServerUtils.getResponse(s);
+                Log.i("server response", s2);
                 try {
                     JSONObject jsonObject = new JSONObject(s2);
 
                     JSONArray playlists=jsonObject.getJSONArray("playlists");
-
+                    Date date = Calendar.getInstance().getTime();
+                    journalEntry je = new journalEntry(date, s, (float)jsonObject.getDouble("compound"));
+                    DBHelper db = new DBHelper(getActivity().getApplicationContext());
+                    db.insertEntry(je);
                     for(int i=0;i<playlists.length();i++){
                         JSONArray tempObj2=playlists.getJSONArray(i);
                         JSONObject tempObj=tempObj2.getJSONObject(0);
