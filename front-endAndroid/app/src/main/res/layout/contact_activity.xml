@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:textColor="@color/black"
         android:text="https://www.nhs.uk/mental-health/nhs-voluntary-charity-services/nhs-services/how-to-access-mental-health-services/">
 
     </EditText>
@@ -33,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="01225 316199"
+        android:textColor="@color/black"
         android:layout_margin="10dp">
     </EditText>
     <TextView
@@ -46,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:textColor="@color/black"
         android:text="https://www.nhs.uk/service-search/mental-health/find-an-urgent-mental-health-helpline">
     </EditText>
     <TextView
@@ -58,6 +61,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:layout_margin="10dp"
         android:text="116 123"/>
 </LinearLayout>
