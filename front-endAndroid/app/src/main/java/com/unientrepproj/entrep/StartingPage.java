@@ -131,7 +131,7 @@ public class StartingPage extends AppCompatActivity {
         cursor.moveToFirst();
         String name =cursor.getString(0);
         TextView nameTex=findViewById(R.id.nameTex);
-        nameTex.setText(name);
+        nameTex.setText("Welcome "+name);
     }
 
     public void directToSpotify(String s){

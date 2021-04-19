@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TabsClasses.QuestionsFrag">
+    tools:context=".TabsClasses.QuestionsFrag"
+    android:background="#ededed">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
@@ -20,7 +21,7 @@
         <include layout="@layout/question"></include>
         <GridView
             android:id="@+id/girdviewQuestionAnswers"
-            android:layout_height="300dp"
+            android:layout_height="440dp"
             android:layout_width="match_parent"
             android:layout_margin="10dp"
             android:columnWidth="100dp"
@@ -32,12 +33,16 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:id="@+id/q2ans"></EditText>
         <include layout="@layout/question_3"></include>
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -53,11 +58,15 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:id="@+id/q4ans"></EditText>
         <include layout="@layout/question_5"></include>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:id="@+id/q5ans"></EditText>
 
     </LinearLayout>
