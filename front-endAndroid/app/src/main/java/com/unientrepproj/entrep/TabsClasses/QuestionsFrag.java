@@ -24,8 +24,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
+import backend.DBHelper;
 import backend.MoodServerUtils;
+import backend.journalEntry;
 
 
 public class QuestionsFrag extends Fragment {
@@ -76,7 +80,10 @@ public class QuestionsFrag extends Fragment {
                 String s2= MoodServerUtils.getResponse(s);
                 try {
                     JSONObject jsonObject = new JSONObject(s2);
-
+                    Date date = Calendar.getInstance().getTime();
+                    journalEntry je = new journalEntry(date, s, (float)jsonObject.getDouble("compound"));
+                    DBHelper db = new DBHelper(getActivity().getApplicationContext());
+                    db.insertEntry(je);
                     JSONArray playlists=jsonObject.getJSONArray("playlists");
 
                     for(int i=0;i<playlists.length();i++){

@@ -39,17 +39,18 @@ import static android.provider.Settings.System.DATE_FORMAT;
 public class CalendarActivity extends AppCompatActivity {
 
 
-    List<String> greenDateList = Arrays.asList(
-            "2019-01-01",
-            "2019-01-03", "2019-01-04", "2019-01-05", "2019-01-06");
+    //dummy initial representation
+    List<String> greenDateList =Arrays.asList(
+            "2021-04-09", "2021-04-08", "2021-04-06","2021-04-14","2021-04-07");
     List<String> grayDateList = Arrays.asList(
-            "2019-01-09", "2019-01-10", "2019-01-11",
-            "2019-01-24", "2019-01-25", "2019-01-26", "2019-01-27", "2019-01-28", "2019-01-29");
+            "2021-04-12","2021-04-13");
     List<String> redDateList = Arrays.asList(
-            "2021-01-09", "2021-01-10", "2021-01-11",
-            "2021-01-24", "2021-01-25", "2021-01-26", "2021-01-27", "2021-01-28", "2021-01-29");
-    List<String> reddish=new ArrayList<>();
-    List<String> greenish=new ArrayList<>();
+            "2021-04-09", "2021-04-10", "2021-04-11",
+            "2021-04-02", "2021-04-03", "2021-04-04");
+    List<String> reddish=Arrays.asList(
+            "2021-04-05","2021-04-17","2021-04-18","2021-04-19","2021-04-20","2021-03-31","2021-03-30","2021-03-29","2021-03-28","2021-03-27");
+    List<String> greenish=Arrays.asList(
+            "2021-04-01","2021-04-16","2021-04-15");
     final String DATE_FORMAT = "yyyy-MM-dd";
     final CalendarDay min=CalendarDay.from(1900,1,1);
     final CalendarDay max=CalendarDay.from(2100,12,12);
@@ -109,6 +110,7 @@ public class CalendarActivity extends AppCompatActivity {
            Log.i("mood", String.valueOf(diff));
             stats = String.format("This month your mood has been %d%% better than last month.", diff);
         }
+        //String stats = "This month your mood has been 13% better than last month.";
         statsText.setText(stats);
 
 
