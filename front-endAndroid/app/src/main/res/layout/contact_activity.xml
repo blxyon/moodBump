@@ -75,5 +75,26 @@
         android:textColor="@color/black"
         android:layout_margin="10dp"
         android:text="116 123"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Demo IP address server:"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:layout_margin="10dp"
+        android:textSize="20sp">
+    </TextView>
+    <EditText
+        android:id="@+id/ipAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_margin="10dp" />
+    <Button
+        android:id="@+id/submitIp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit server IP"/>
+
 </LinearLayout>
 </ScrollView>

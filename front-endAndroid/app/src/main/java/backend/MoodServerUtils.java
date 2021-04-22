@@ -21,7 +21,7 @@ import java.util.concurrent.Future;
 public class MoodServerUtils {
     private MoodServerUtils() {}
     public static String protocol = "http";
-    public static String host = "192.168.1.102";
+    public static String host = "";
     public static int port = 8000;
     public static String path = "/api/sentiment/";
 

@@ -3,12 +3,16 @@ package com.unientrepproj.entrep;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.unientrepproj.entrep.TabsClasses.QuestionsDiaryActivity;
+
+import backend.MoodServerUtils;
 
 public class ContactActivity extends AppCompatActivity {
 
@@ -29,6 +33,14 @@ public class ContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 toCalendar();
+            }
+        });
+        Button submitIp =findViewById(R.id.submitIp);
+        submitIp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText ipAdd=findViewById(R.id.ipAddress);
+                MoodServerUtils.host=ipAdd.getText().toString();
             }
         });
     }
