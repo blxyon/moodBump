@@ -1,11 +1,11 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+#!/usr/bin/env python
+# coding: utf-8
 
-# Create your views here.
+from .sentiment import analyse
+from rest_framework.decorators import api_view
+from django.http import JsonResponse
 
-def mood(request):
-    text = request.GET["text"]
-    print("Mood request with text \"{}\"".format(text))
-    #calculate the mood and send back the result
-    #echo the request for now
-    return HttpResponse(text)
+@api_view(['POST'])
+def analyse_sentiment(request):
+    output = analyse(str(request.body))
+    return JsonResponse(output)
