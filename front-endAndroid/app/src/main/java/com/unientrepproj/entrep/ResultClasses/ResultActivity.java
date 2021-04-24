@@ -58,7 +58,9 @@ public class ResultActivity extends AppCompatActivity {
 //    "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg",
 //    "https://images-ext-2.discordapp.net/external/dIhtCsH7KMv3XToNx9rSoTxdqohW9kDWafMvTT-BT8o/%3Fwidth%3D620%26quality%3D85%26auto%3Dformat%26fit%3Dmax%26s%3D56d5de4c5609ca98def0c3382bd569b4/https/i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg"};
     //String urls[]={"http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg","http://127.0.0.1:9999/3408.jpg"};
+
     String urls[];
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +94,7 @@ public class ResultActivity extends AppCompatActivity {
         gridView = findViewById(R.id.grivViewResults);
 
         arrayList = new ArrayList<>();
+
         if(urls!=null & spotLinks!=null) {
             for (int i = 0; i < urls.length; i++) {
                 imageModelDislikeLike imagemodel = new imageModelDislikeLike();
@@ -101,6 +104,7 @@ public class ResultActivity extends AppCompatActivity {
                 //add in array list
                 arrayList.add(imagemodel);
             }
+
         }
 
         resultImagesAdapter adpter = new resultImagesAdapter(this, arrayList);
@@ -150,6 +154,7 @@ public class ResultActivity extends AppCompatActivity {
 //            return null;
 //        }
 //    }
+
     @SuppressLint("ResourceAsColor")
     public void flipperQuotes(String quote){
         TextView textView=new TextView(this);

@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class MoodbumpapiConfig(AppConfig):
+class MoodbumpAPIConfig(AppConfig):
     name = 'moodbumpAPI'
