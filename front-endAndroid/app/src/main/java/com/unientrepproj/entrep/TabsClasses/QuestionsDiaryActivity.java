@@ -85,6 +85,7 @@ public class QuestionsDiaryActivity extends AppCompatActivity {
             }
         };
         t.start();
+
     }
     public void toCalendar(){
         startActivity(new Intent(this, CalendarActivity.class));

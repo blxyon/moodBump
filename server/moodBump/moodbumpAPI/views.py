@@ -9,3 +9,4 @@ from django.http import JsonResponse
 def analyse_sentiment(request):
     output = analyse(str(request.body))
     return JsonResponse(output)
+
