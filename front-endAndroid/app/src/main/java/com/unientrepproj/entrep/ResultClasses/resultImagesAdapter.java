@@ -1,6 +1,8 @@
 package com.unientrepproj.entrep.ResultClasses;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,8 +49,10 @@ public class resultImagesAdapter extends BaseAdapter{
             convertView = LayoutInflater.from(context).inflate(R.layout.results_images_buttons, parent, false);
         }
         ImageView imageModel= convertView.findViewById(R.id.imageView3);
-        //Glide.with(context).load(arrayList.get(position).getImgAcc()).into(imageModel);
-        imageModel.setImageBitmap(arrayList.get(position).getImgAcc());
+        Glide.with(context).load(arrayList.get(position).getImgAcc()).into(imageModel);
+
+
+        //imageModel.setImageBitmap(arrayList.get(position).getImgAcc());
 
         ImageButton like=convertView.findViewById(R.id.button9);
         ImageButton dislike=convertView.findViewById(R.id.button8);
@@ -74,7 +78,15 @@ public class resultImagesAdapter extends BaseAdapter{
         arrayList.get(position).getImg().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("id3",arrayList.get(position).getSpotLink());
+
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("spotify:playlist:37i9dQZF1DWURugcFfOfEH"));
+
+                intent.putExtra(
+                        Intent.EXTRA_REFERRER,
+                        Uri.parse("android-app://"+this)
+                );
+                context.startActivity(intent);
             }
         });
         return convertView;
