@@ -5,6 +5,8 @@
 import statistics
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from .spotify import reccomend
+from collections import Counter
+
 
 # Get sentiment dictionary 
 def getSentiment(data):
@@ -50,8 +52,18 @@ def findKeywords(data):
         for j in range(len(keywords[i][1])):
             if keywords[i][1][j] in data:
                 kwords_in_text.append(keywords[i][0])            
-    k = statistics.mode(kwords_in_text)
-    return k          
+    
+    if len(kwords_in_text) != 0:
+        res = []
+        test_list1 = Counter(kwords_in_text) 
+        temp = test_list1.most_common(1)[0][1] 
+        for ele in kwords_in_text:
+            if kwords_in_text.count(ele) == temp:
+                res.append(ele)
+        res = list(set(res))
+    
+        return res[0]  
+    else: return "none"
                 
 # Main 
 def analyse(data):
@@ -64,6 +76,7 @@ def analyse(data):
     keyword = findKeywords(data)
     
     playlists = reccomend(mood, keyword)
+
     playlists_refined = []
     for i in range(len(playlists)):
         playlist_dict = {'name': playlists[i]['name'], 'description': playlists[i]['description'], 'external_urls': playlists[i]['external_urls'], 'images': playlists[i]['images'], 'id': playlists[i]['id']}
@@ -71,7 +84,8 @@ def analyse(data):
 
         
     #print("You are", mood, "and you did", keyword, "so we reccomend playlists:", playlists[0]['name'], "and", playlists[1]['name'])
-    return {"compound" : compund, "mood" : mood, "keyword" : keyword, "playlists" : playlists_refined} 
+    return {"compound" : compound, "mood" : mood, "keyword" : keyword, "playlists" : playlists_refined} 
+
 
 
 
