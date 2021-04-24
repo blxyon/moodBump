@@ -3,6 +3,7 @@ package com.unientrepproj.entrep;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
@@ -38,17 +39,18 @@ import static android.provider.Settings.System.DATE_FORMAT;
 public class CalendarActivity extends AppCompatActivity {
 
 
-    List<String> greenDateList = Arrays.asList(
-            "2019-01-01",
-            "2019-01-03", "2019-01-04", "2019-01-05", "2019-01-06");
+    //dummy initial representation
+    List<String> greenDateList =Arrays.asList(
+            "2021-04-09", "2021-04-08", "2021-04-06","2021-04-14","2021-04-07");
     List<String> grayDateList = Arrays.asList(
-            "2019-01-09", "2019-01-10", "2019-01-11",
-            "2019-01-24", "2019-01-25", "2019-01-26", "2019-01-27", "2019-01-28", "2019-01-29");
+            "2021-04-12","2021-04-13");
     List<String> redDateList = Arrays.asList(
-            "2021-01-09", "2021-01-10", "2021-01-11",
-            "2021-01-24", "2021-01-25", "2021-01-26", "2021-01-27", "2021-01-28", "2021-01-29");
-    List<String> reddish=new ArrayList<>();
-    List<String> greenish=new ArrayList<>();
+            "2021-04-09", "2021-04-10", "2021-04-11",
+            "2021-04-02", "2021-04-03", "2021-04-04");
+    List<String> reddish=Arrays.asList(
+            "2021-04-05","2021-04-17","2021-04-18","2021-04-19","2021-04-20","2021-03-31","2021-03-30","2021-03-29","2021-03-28","2021-03-27");
+    List<String> greenish=Arrays.asList(
+            "2021-04-01","2021-04-16","2021-04-15");
     final String DATE_FORMAT = "yyyy-MM-dd";
     final CalendarDay min=CalendarDay.from(1900,1,1);
     final CalendarDay max=CalendarDay.from(2100,12,12);
@@ -73,10 +75,43 @@ public class CalendarActivity extends AppCompatActivity {
                 toHome();
             }
         });
-
+        ImageButton contactsBut=findViewById(R.id.contacts);
+        contactsBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toContacts();
+            }
+        });
 
         TextView statsText=findViewById(R.id.statsText);
-        statsText.setText("This month there has been a 10% increase in your positive mood!");
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        Date startofThis = cal.getTime();
+        cal.add(Calendar.MONTH, -1);
+        Date startofLast = cal.getTime();
+        cal.add(Calendar.MONTH, 2);
+        Date startofNext = cal.getTime();
+        DBHelper db = new DBHelper(this);
+        ArrayList<journalEntry> lastMonth = db.getEntryByRange(startofLast, startofThis);
+        ArrayList<journalEntry> thisMonth = db.getEntryByRange(startofThis, startofNext);
+        float totalLast = 0;
+        float totalThis = 0;
+        for (journalEntry je : lastMonth) {totalLast += je.getMood();};
+        for (journalEntry je : thisMonth) {totalThis += je.getMood();};
+        float averageLast = totalLast/lastMonth.size();
+        float averageThis = totalThis/thisMonth.size();
+        int diff = 0;
+        String stats = "";
+        Log.i("mood last", String.valueOf(averageLast));
+        Log.i("mood this", String.valueOf(averageThis));
+        if (averageLast != 0 && averageLast < averageThis) {
+           diff = Math.abs((int)(100*(averageThis - averageLast)/averageLast));
+           Log.i("mood", String.valueOf(diff));
+            stats = String.format("This month your mood has been %d%% better than last month.", diff);
+        }
+        //String stats = "This month your mood has been 13% better than last month.";
+        statsText.setText(stats);
 
 
 
@@ -104,6 +139,7 @@ public class CalendarActivity extends AppCompatActivity {
         startActivity(new Intent(this, StartingPage.class));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void getFromDB(){
         greenDateList=new ArrayList<>();
         redDateList=new ArrayList<>();
@@ -112,19 +148,21 @@ public class CalendarActivity extends AppCompatActivity {
         reddish=new ArrayList<>();
 
         DBHelper db=new DBHelper(this);
-
         ArrayList<journalEntry> jes=db.getAllEntries();
         SimpleDateFormat sdf=new SimpleDateFormat(DATE_FORMAT);
         for (journalEntry je:jes){
-            if(je.getMood()==0){
+            float mood = je.getMood();
+            Log.i("mood", Float.toString(mood));
+            if(mood < 0.2 && mood >= -0.2){
                 grayDateList.add(sdf.format(je.getDate()));
-            }else if(je.getMood()==1){
+            }else if(mood >= 0.5){
                 greenDateList.add(sdf.format(je.getDate()));
-            }else if(je.getMood()==-1){
+            }else if(mood < -0.5){
+                Log.i("mood", "red date");
                 redDateList.add(sdf.format(je.getDate()));
-            }else if(je.getMood()==0.5){
+            }else if(mood < 0.5 && mood >= 0.2){
                 greenish.add(sdf.format(je.getDate()));
-            }else if(je.getMood()==-0.5){
+            }else if(mood < -0.2 && mood >= -0.5){
                 reddish.add(sdf.format(je.getDate()));
             }
         }
@@ -167,13 +205,13 @@ public class CalendarActivity extends AppCompatActivity {
             }
 
             if (left && right) {
-                datesCenter.add(CalendarDay.from(localDate.getYear(),localDate.getMonthValue(),localDate.getDayOfMonth()));
+                datesCenter.add(CalendarDay.from(localDate.getYear(),localDate.getMonthValue()-1,localDate.getDayOfMonth()));
             } else if (left) {
-                datesLeft.add(CalendarDay.from(localDate.getYear(),localDate.getMonthValue(),localDate.getDayOfMonth()));
+                datesLeft.add(CalendarDay.from(localDate.getYear(),localDate.getMonthValue()-1,localDate.getDayOfMonth()));
             } else if (right) {
-                datesRight.add(CalendarDay.from(localDate.getYear(),localDate.getMonthValue(),localDate.getDayOfMonth()));
+                datesRight.add(CalendarDay.from(localDate.getYear(),localDate.getMonthValue()-1,localDate.getDayOfMonth()));
             } else {
-                datesIndependent.add(CalendarDay.from(localDate.getYear(),localDate.getMonthValue(),localDate.getDayOfMonth()));
+                datesIndependent.add(CalendarDay.from(localDate.getYear(),localDate.getMonthValue()-1,localDate.getDayOfMonth()));
             }
         }
 
@@ -217,8 +255,9 @@ public class CalendarActivity extends AppCompatActivity {
             Date input = sdf.parse(date);
             Calendar cal = Calendar.getInstance();
             cal.setTime(input);
+            Log.i("month", Integer.toString(cal.get(Calendar.MONTH)));
             return LocalDate.of(cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH) + 1,
+                    cal.get(Calendar.MONTH)+1,
                     cal.get(Calendar.DAY_OF_MONTH));
 
 
@@ -227,5 +266,8 @@ public class CalendarActivity extends AppCompatActivity {
         } catch (ParseException e) {
             return null;
         }
+    }
+    public void toContacts(){
+        startActivity(new Intent(this, ContactActivity.class));
     }
 }

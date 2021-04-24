@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.unientrepproj.entrep.CalendarActivity;
+import com.unientrepproj.entrep.ContactActivity;
 import com.unientrepproj.entrep.R;
 import com.unientrepproj.entrep.StartingPage;
 import com.unientrepproj.entrep.imageModel;
@@ -47,6 +48,14 @@ public class QuestionsDiaryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 toHome();
+            }
+        });
+
+        ImageButton contactsBut=findViewById(R.id.contacts);
+        contactsBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toContacts();
             }
         });
 
@@ -92,5 +101,8 @@ public class QuestionsDiaryActivity extends AppCompatActivity {
     }
     public void toHome(){
         startActivity(new Intent(this, StartingPage.class));
+    }
+    public void toContacts(){
+        startActivity(new Intent(this, ContactActivity.class));
     }
 }

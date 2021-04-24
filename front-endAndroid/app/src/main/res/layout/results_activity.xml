@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultClasses.ResultActivity">
+    tools:context=".ResultClasses.ResultActivity"
+    android:background="#ededed">
 <ScrollView android:layout_height="match_parent" android:layout_width="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,6 +21,8 @@
             android:text="Based on your results:"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/textView2"
@@ -27,11 +30,13 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textAlignment="center"
             android:gravity="center_horizontal" />
         <GridView
             android:id="@+id/grivViewResults"
-            android:layout_height="437dp"
+            android:layout_height="400dp"
             android:layout_width="match_parent"
             android:layout_margin="10dp"
             android:columnWidth="150dp"
@@ -44,10 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:id="@+id/quoteSlider">
-            <TextView android:id="@+id/textViewSlider"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" android:text="safas"
-                android:gravity="center"></TextView>
+
         </ViewFlipper>
     </LinearLayout>
 </ScrollView>

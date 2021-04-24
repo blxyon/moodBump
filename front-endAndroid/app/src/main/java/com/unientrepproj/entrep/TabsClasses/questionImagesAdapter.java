@@ -43,6 +43,8 @@ public class questionImagesAdapter extends BaseAdapter {
         }
         ImageView imageView;
         imageView = (ImageView) convertView.findViewById(R.id.image);
+        imageView.getLayoutParams().height = 300;
+        imageView.getLayoutParams().width = 300;
         imageView.setImageResource(arrayList.get(position).getmThumbIds());
         return convertView;
     }

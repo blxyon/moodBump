@@ -49,7 +49,9 @@ public class resultImagesAdapter extends BaseAdapter{
             convertView = LayoutInflater.from(context).inflate(R.layout.results_images_buttons, parent, false);
         }
         ImageView imageModel= convertView.findViewById(R.id.imageView3);
-        Glide.with(context).load(arrayList.get(position).getImgAcc()).into(imageModel);
+
+        Glide.with(context).load(arrayList.get(position).getImgAcc()).into(imageModel);//download and place the images
+
 
 
         //imageModel.setImageBitmap(arrayList.get(position).getImgAcc());
@@ -80,7 +82,12 @@ public class resultImagesAdapter extends BaseAdapter{
             public void onClick(View v) {
 
                 Intent intent=new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("spotify:playlist:37i9dQZF1DWURugcFfOfEH"));
+
+
+                String arr[]=arrayList.get(position).getSpotLink().split("/");
+
+                intent.setData(Uri.parse("spotify:playlist:"+arr[arr.length-1]));
+
 
                 intent.putExtra(
                         Intent.EXTRA_REFERRER,

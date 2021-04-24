@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#7ac7c5"
+    >
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Contacts"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:gravity="center_vertical"
+            tools:ignore="RtlCompat">
+
+        </TextView>
+    </LinearLayout>
+</androidx.appcompat.widget.Toolbar>
